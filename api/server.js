@@ -12,4 +12,12 @@ server.use(express.json());
 
 configureRoutes(server);
 
+server.use('/api', configureRoutes);
+
+// router.get('/', (req, res) => {
+//     res.send(`
+//     <h2>Server is working!!</h2>
+//     `)
+//   })
+
 module.exports = server;

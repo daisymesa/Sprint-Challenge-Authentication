@@ -1,3 +1,7 @@
+const express = require('express');
+const server = express();
+server.use(express.json());
+
 const axios = require('axios');
 
 const { authenticate } = require('../auth/authenticate');
@@ -7,6 +11,25 @@ module.exports = server => {
   server.post('/api/login', login);
   server.get('/api/jokes', authenticate, getJokes);
 };
+
+
+//router sanity check
+server.get('/', (req, res) => {
+  res.send(`
+  <h2>Router is working</h2>
+  `)
+})
+
+//test
+// server.get('/', (req, res) => {
+//   db('users')
+//       .then(users => {
+//           res.status(200).json(users);
+//       })
+//       .catch(error => {
+//           res.status(500).json(error);
+//       })
+// })
 
 function register(req, res) {
   // implement user registration
